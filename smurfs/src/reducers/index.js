@@ -7,7 +7,9 @@ import {
   SMURFS_SAVED,
   SAVING_SMURFS,
   EDITING_SMURFS,
-  SMURF_EDITED
+  SMURF_EDITED,
+  SHOW_EDIT_FORM,
+  HIDE_EDIT_FORM
 } from "../actions/index";
 
 /*
@@ -32,7 +34,8 @@ const initialState = {
   smurfDeleted: false,
   smurfs: [],
   error: null,
-  currentSmurf: null
+  currentSmurf: null,
+  showEditForm: false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -49,7 +52,8 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: [],
         error: null,
-        currentSmurf: null
+        currentSmurf: null,
+        showEditForm: false
       };
     case SMURFS_FETCHED:
       return {
@@ -63,7 +67,8 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: action.payload,
         error: null,
-        currentSmurf: null
+        currentSmurf: null,
+        showEditForm: false
       };
     case SAVING_SMURFS:
       return {
@@ -77,7 +82,8 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: state.smurfs,
         error: null,
-        currentSmurf: null
+        currentSmurf: null,
+        showEditForm: false
       };
     case SMURFS_SAVED:
       return {
@@ -91,7 +97,8 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: action.payload,
         error: null,
-        currentSmurf: null
+        currentSmurf: null,
+        showEditForm: false
       };
     case EDITING_SMURFS:
       return {
@@ -105,7 +112,8 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: state.smurfs,
         error: null,
-        currentSmurf: null
+        currentSmurf: null,
+        showEditForm: false
       };
     case SMURF_EDITED:
       return {
@@ -119,7 +127,18 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: action.payload,
         error: null,
-        currentSmurf: null
+        currentSmurf: null,
+        showEditForm: false
+      };
+    case SHOW_EDIT_FORM:
+      return {
+        ...state,
+        showEditForm: true
+      };
+    case HIDE_EDIT_FORM:
+      return {
+        ...state,
+        showEditForm: false
       };
     default:
       return state;

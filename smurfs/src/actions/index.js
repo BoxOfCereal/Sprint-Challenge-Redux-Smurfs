@@ -9,6 +9,8 @@ export const SMURFS_SAVED = "SMURFS_SAVED";
 export const SAVING_SMURFS = "SAVING_SMURFS";
 export const EDITING_SMURFS = "EDITING_SMURFS";
 export const SMURF_EDITED = "SMURF_EDITED";
+export const SHOW_EDIT_FORM = "SHOW_EDIT_FORM";
+export const HIDE_EDIT_FORM = "HIDE_EDIT_FORM";
 export const ERROR = "ERROR";
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -75,5 +77,19 @@ export function updateSmurf(smurf) {
       .catch(error => {
         dispatch({ type: ERROR, payload: `Failed: ${error}` });
       });
+  };
+}
+
+export function showEditForm(id) {
+  return {
+    type: SHOW_EDIT_FORM,
+    payload: id
+  };
+}
+
+export function hideEditForm(id) {
+  return {
+    type: HIDE_EDIT_FORM,
+    payload: id
   };
 }
