@@ -61,7 +61,7 @@ export function saveSmurf(smurf) {
   };
 }
 
-export function updateSmurf(smurf) {
+export function editSmurf(smurf) {
   return dispatch => {
     dispatch({ type: EDITING_SMURFS });
     //destruct id and smurf with no id

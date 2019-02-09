@@ -5,6 +5,7 @@ import "./App.css";
 import { fetchSmurfs } from "../actions/index";
 import SmurfList from "./SmurfList/SmurfList";
 import AddSmurfForm from "./AddSmurfForm/AddSmurfForm";
+import EditSmurfForm from "./EditSmurfForm/EditSmurfForm";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -23,8 +24,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfList smurfs={this.props.smurfs} />
-        <AddSmurfForm />
+        {this.props.showEditForm ? (
+          <EditSmurfForm />
+        ) : (
+          <div>
+            <SmurfList smurfs={this.props.smurfs} />
+            <AddSmurfForm />
+          </div>
+        )}
       </div>
     );
   }
@@ -36,7 +43,8 @@ const mstp = state => {
     fetchingSmurfs: state.fetchingSmurfs,
     smurfsFetched: state.smurfsFetched,
     smurfsSaved: state.smurfsSaved,
-    savingSmurfs: state.savingSmurfs
+    savingSmurfs: state.savingSmurfs,
+    showEditForm: state.showEditForm
   };
 };
 

@@ -113,7 +113,7 @@ const rootReducer = (state = initialState, action) => {
         smurfDeleted: false,
         smurfs: state.smurfs,
         error: null,
-        currentSmurf: null,
+        currentSmurf: state.currentSmurf,
         showEditForm: false
       };
     case SMURF_EDITED:

@@ -13,6 +13,10 @@ class AddSmurfForm extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ ...this.props.smurf });
+  }
+
   inputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -55,8 +59,14 @@ class AddSmurfForm extends React.Component {
   }
 }
 
+const mstp = state => {
+  return {
+    smurf: state.smurfs.filter(smurf => smurf.id == state.currentSmurf)[0]
+  };
+};
+
 export default connect(
-  null,
+  mstp,
   {
     editSmurf
   }
