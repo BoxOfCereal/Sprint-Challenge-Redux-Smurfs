@@ -40,7 +40,7 @@ export function saveSmurf(smurf) {
   return dispatch => {
     dispatch({ type: SAVING_SMURFS });
     axios
-      .post(`http://localhost:5000/api/smurfs`, smurf)
+      .post(`http://localhost:3333/smurfs`, smurf)
       .then(({ data }) => {
         //destructering
         console.log(data);

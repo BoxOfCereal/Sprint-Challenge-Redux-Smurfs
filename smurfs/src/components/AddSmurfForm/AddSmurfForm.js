@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { addSmurf } from "../../actions";
+import { saveSmurf } from "../../actions";
 
 class AddSmurfForm extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class AddSmurfForm extends React.Component {
     this.state = {
       name: "",
       age: "",
-      email: ""
+      height: ""
     };
   }
 
@@ -19,7 +19,7 @@ class AddSmurfForm extends React.Component {
   createSmurf = e => {
     e.preventDefault();
     this.props.saveSmurf({ ...this.state });
-    this.setState({ name: "", age: "", email: "" });
+    this.setState({ name: "", age: "", height: "" });
   };
 
   render() {
@@ -29,20 +29,23 @@ class AddSmurfForm extends React.Component {
           <input
             type="text"
             name="name"
+            placeholder="Name"
             onChange={this.inputChange}
             value={this.state.name}
           />
           <input
             type="text"
             name="age"
+            placeholder="Age"
             onChange={this.inputChange}
             value={this.state.age}
           />
           <input
             type="text"
-            name="email"
+            name="height"
+            placeholder="Height"
             onChange={this.inputChange}
-            value={this.state.email}
+            value={this.state.height}
           />
           <button type="submit">Add A Smurf!</button>
         </form>
@@ -54,6 +57,6 @@ class AddSmurfForm extends React.Component {
 export default connect(
   null,
   {
-    /*addSmurf*/
+    saveSmurf
   }
 )(AddSmurfForm);
