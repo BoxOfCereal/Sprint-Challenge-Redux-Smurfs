@@ -21,11 +21,11 @@ export function fetchSmurfs() {
     dispatch({ type: FETCHING_SMURFS });
     axios
       .get(`http://localhost:3333/smurfs`)
-      .then(response => {
-        console.log(response);
+      .then(({ data }) => {
+        console.log(data);
         dispatch({
           type: SMURFS_FETCHED,
-          payload: response
+          payload: data
         });
       })
       .catch(error => {
