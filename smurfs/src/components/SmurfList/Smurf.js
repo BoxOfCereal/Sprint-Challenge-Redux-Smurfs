@@ -10,7 +10,9 @@ const Smurf = props => {
   return (
     <li>
       <div>
-        <h4>{props.smurf.name}</h4>
+        <h4>Name: {props.smurf.name}</h4>
+        <p>Age: {props.smurf.age}</p>
+        <p>Height: {props.smurf.height}</p>
         <button
           onClick={() => {
             props.setCurrentSmurf(props.smurf.id);
