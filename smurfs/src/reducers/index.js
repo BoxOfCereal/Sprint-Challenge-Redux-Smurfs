@@ -1,6 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
+import { FETCHING_SMURFS, SMURFS_FETCHED } from "../actions/index";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -13,6 +14,51 @@
    error: null
  }
 */
+const initialState = {
+  fetchingSmurfs: false,
+  smurfsFetched: false,
+  smurfsSaved: false,
+  savingSmurfs: false,
+  updatingSmurf: false,
+  smurfUpdated: false,
+  deletingSmurf: false,
+  smurfDeleted: false,
+  smurfs: [],
+  error: null
+};
+
+export const smurfsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING_SMURFS:
+      return {
+        fetchingSmurfs: true,
+        smurfsFetched: false,
+        smurfsSaved: false,
+        savingSmurfs: false,
+        updatingSmurf: false,
+        smurfUpdated: false,
+        deletingSmurf: false,
+        smurfDeleted: false,
+        smurfs: [],
+        error: null
+      };
+    case SMURFS_FETCHED:
+      return {
+        fetchingSmurfs: false,
+        smurfsFetched: true,
+        smurfsSaved: false,
+        savingSmurfs: false,
+        updatingSmurf: false,
+        smurfUpdated: false,
+        deletingSmurf: false,
+        smurfDeleted: false,
+        smurfs: action.payload,
+        error: null
+      };
+    default:
+      return state;
+  }
+};
 
 /*
   You'll only need one smurf reducer for this project.
