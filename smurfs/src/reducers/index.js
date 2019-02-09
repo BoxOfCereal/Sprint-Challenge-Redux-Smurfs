@@ -10,7 +10,9 @@ import {
   SMURF_EDITED,
   SHOW_EDIT_FORM,
   HIDE_EDIT_FORM,
-  SET_CURRENT_SMURF
+  SET_CURRENT_SMURF,
+  DELETING_SMURF,
+  SMURF_DELETED
 } from "../actions/index";
 
 /*
@@ -145,6 +147,19 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         currentSmurf: action.payload
+      };
+    case DELETING_SMURF:
+      return {
+        ...state,
+        deletingSmurf: true,
+        smurfDeleted: false
+      };
+    case SMURF_DELETED:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfDeleted: true,
+        smurfs: action.payload
       };
     default:
       return state;

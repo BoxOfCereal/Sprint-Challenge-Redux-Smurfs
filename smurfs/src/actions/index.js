@@ -9,6 +9,8 @@ export const SMURFS_SAVED = "SMURFS_SAVED";
 export const SAVING_SMURFS = "SAVING_SMURFS";
 export const EDITING_SMURFS = "EDITING_SMURFS";
 export const SMURF_EDITED = "SMURF_EDITED";
+export const DELETING_SMURF = "DELETING_SMURF";
+export const SMURF_DELETED = "SMURF_DELETED";
 export const SHOW_EDIT_FORM = "SHOW_EDIT_FORM";
 export const HIDE_EDIT_FORM = "HIDE_EDIT_FORM";
 export const SET_CURRENT_SMURF = "SET_CURRENT_SMURF";
@@ -70,9 +72,26 @@ export function editSmurf(smurf) {
       .put(`http://localhost:3333/smurfs/${id}`, smurfWithNoId)
       .then(({ data }) => {
         //destructering
-        console.log(data);
         dispatch({
           type: SMURF_EDITED,
+          payload: data
+        });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: `Failed: ${error}` });
+      });
+  };
+}
+
+export function deleteSmurf(id) {
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF });
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(({ data }) => {
+        //destructering
+        dispatch({
+          type: SMURF_DELETED,
           payload: data
         });
       })
