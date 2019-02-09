@@ -11,6 +11,8 @@ export const EDITING_SMURFS = "EDITING_SMURFS";
 export const SMURF_EDITED = "SMURF_EDITED";
 export const SHOW_EDIT_FORM = "SHOW_EDIT_FORM";
 export const HIDE_EDIT_FORM = "HIDE_EDIT_FORM";
+export const SET_CURRENT_SMURF = "SET_CURRENT_SMURF";
+
 export const ERROR = "ERROR";
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -80,16 +82,21 @@ export function updateSmurf(smurf) {
   };
 }
 
-export function showEditForm(id) {
+export function showEditForm() {
   return {
-    type: SHOW_EDIT_FORM,
-    payload: id
+    type: SHOW_EDIT_FORM
   };
 }
 
-export function hideEditForm(id) {
+export function hideEditForm() {
   return {
-    type: HIDE_EDIT_FORM,
+    type: HIDE_EDIT_FORM
+  };
+}
+
+export function setCurrentSmurf(id) {
+  return {
+    type: SET_CURRENT_SMURF,
     payload: id
   };
 }
