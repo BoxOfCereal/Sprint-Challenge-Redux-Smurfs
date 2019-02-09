@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./App.css";
+
+import { fetchSmurfs } from "../actions/index";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -19,4 +22,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mstp = state => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
+  };
+};
+
+export default connect(
+  mstp,
+  { fetchSmurfs }
+)(App);

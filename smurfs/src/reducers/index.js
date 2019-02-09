@@ -27,7 +27,7 @@ const initialState = {
   error: null
 };
 
-export const smurfsReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_SMURFS:
       return {
@@ -67,3 +67,4 @@ export const smurfsReducer = (state = initialState, action) => {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
+export default rootReducer;
