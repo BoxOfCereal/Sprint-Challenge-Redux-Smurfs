@@ -5,7 +5,9 @@ import {
   FETCHING_SMURFS,
   SMURFS_FETCHED,
   SMURFS_SAVED,
-  SAVING_SMURFS
+  SAVING_SMURFS,
+  EDITING_SMURFS,
+  SMURF_EDITED
 } from "../actions/index";
 
 /*
@@ -14,7 +16,7 @@ import {
    smurfs: [],
    fetchingSmurfs: false
    addingSmurf: false
-   updatingSmurf: false
+   editingSmurf: false
    deletingSmurf: false
    error: null
  }
@@ -24,12 +26,13 @@ const initialState = {
   smurfsFetched: false,
   smurfsSaved: false,
   savingSmurfs: false,
-  updatingSmurf: false,
-  smurfUpdated: false,
+  editingSmurf: false,
+  smurfEdited: false,
   deletingSmurf: false,
   smurfDeleted: false,
   smurfs: [],
-  error: null
+  error: null,
+  currentSmurf: null
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -40,12 +43,13 @@ const rootReducer = (state = initialState, action) => {
         smurfsFetched: false,
         smurfsSaved: false,
         savingSmurfs: false,
-        updatingSmurf: false,
-        smurfUpdated: false,
+        editingSmurf: false,
+        smurfEdited: false,
         deletingSmurf: false,
         smurfDeleted: false,
         smurfs: [],
-        error: null
+        error: null,
+        currentSmurf: null
       };
     case SMURFS_FETCHED:
       return {
@@ -53,12 +57,13 @@ const rootReducer = (state = initialState, action) => {
         smurfsFetched: true,
         smurfsSaved: false,
         savingSmurfs: false,
-        updatingSmurf: false,
-        smurfUpdated: false,
+        editingSmurf: false,
+        smurfEdited: false,
         deletingSmurf: false,
         smurfDeleted: false,
         smurfs: action.payload,
-        error: null
+        error: null,
+        currentSmurf: null
       };
     case SAVING_SMURFS:
       return {
@@ -66,12 +71,13 @@ const rootReducer = (state = initialState, action) => {
         smurfsFetched: false,
         smurfsSaved: false,
         savingSmurfs: true,
-        updatingSmurf: false,
-        smurfUpdated: false,
+        editingSmurf: false,
+        smurfEdited: false,
         deletingSmurf: false,
         smurfDeleted: false,
         smurfs: state.smurfs,
-        error: null
+        error: null,
+        currentSmurf: null
       };
     case SMURFS_SAVED:
       return {
@@ -79,12 +85,41 @@ const rootReducer = (state = initialState, action) => {
         smurfsFetched: false,
         smurfsSaved: true,
         savingSmurfs: false,
-        updatingSmurf: false,
-        smurfUpdated: false,
+        editingSmurf: false,
+        smurfEdited: false,
         deletingSmurf: false,
         smurfDeleted: false,
         smurfs: action.payload,
-        error: null
+        error: null,
+        currentSmurf: null
+      };
+    case EDITING_SMURFS:
+      return {
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        smurfsSaved: false,
+        savingSmurfs: false,
+        editingSmurf: true,
+        smurfEdited: false,
+        deletingSmurf: false,
+        smurfDeleted: false,
+        smurfs: state.smurfs,
+        error: null,
+        currentSmurf: null
+      };
+    case SMURF_EDITED:
+      return {
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        smurfsSaved: false,
+        savingSmurfs: false,
+        editingSmurf: false,
+        smurfEdited: true,
+        deletingSmurf: false,
+        smurfDeleted: false,
+        smurfs: action.payload,
+        error: null,
+        currentSmurf: null
       };
     default:
       return state;
