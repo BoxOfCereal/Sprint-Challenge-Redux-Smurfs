@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { showEditForm, setCurrentSmurf } from "../../actions/index";
+import {
+  showEditForm,
+  setCurrentSmurf,
+  deleteSmurf
+} from "../../actions/index";
 
 const Smurf = props => {
   return (
@@ -15,6 +19,13 @@ const Smurf = props => {
         >
           Edit Smurf
         </button>
+        <button
+          onClick={() => {
+            props.deleteSmurf(props.smurf.id);
+          }}
+        >
+          Delete Smurf
+        </button>
       </div>
     </li>
   );
@@ -22,5 +33,5 @@ const Smurf = props => {
 
 export default connect(
   null,
-  { showEditForm, setCurrentSmurf }
+  { showEditForm, setCurrentSmurf, deleteSmurf }
 )(Smurf);
