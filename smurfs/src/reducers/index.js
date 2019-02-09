@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, SMURFS_FETCHED } from "../actions/index";
+import {
+  FETCHING_SMURFS,
+  SMURFS_FETCHED,
+  SMURFS_SAVED,
+  SAVING_SMURFS
+} from "../actions/index";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -47,6 +52,32 @@ const rootReducer = (state = initialState, action) => {
         fetchingSmurfs: false,
         smurfsFetched: true,
         smurfsSaved: false,
+        savingSmurfs: false,
+        updatingSmurf: false,
+        smurfUpdated: false,
+        deletingSmurf: false,
+        smurfDeleted: false,
+        smurfs: action.payload,
+        error: null
+      };
+    case SAVING_SMURFS:
+      return {
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        smurfsSaved: false,
+        savingSmurfs: true,
+        updatingSmurf: false,
+        smurfUpdated: false,
+        deletingSmurf: false,
+        smurfDeleted: false,
+        smurfs: state.smurfs,
+        error: null
+      };
+    case SMURFS_SAVED:
+      return {
+        fetchingSmurfs: false,
+        smurfsFetched: false,
+        smurfsSaved: true,
         savingSmurfs: false,
         updatingSmurf: false,
         smurfUpdated: false,

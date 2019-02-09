@@ -5,6 +5,8 @@ import axios from "axios";
 */
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const SMURFS_FETCHED = "SMURFS_FETCHED";
+export const SMURFS_SAVED = "SMURFS_SAVED";
+export const SAVING_SMURFS = "SAVING_SMURFS";
 export const ERROR = "ERROR";
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -25,6 +27,25 @@ export function fetchSmurfs() {
         console.log(data);
         dispatch({
           type: SMURFS_FETCHED,
+          payload: data
+        });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: `Failed: ${error}` });
+      });
+  };
+}
+
+export function saveSmurf(smurf) {
+  return dispatch => {
+    dispatch({ type: SAVING_SMURFS });
+    axios
+      .post(`http://localhost:5000/api/smurfs`, smurf)
+      .then(({ data }) => {
+        //destructering
+        console.log(data);
+        dispatch({
+          type: SMURFS_SAVED,
           payload: data
         });
       })
