@@ -34,11 +34,7 @@ const mstp = state => {
     fetchingSmurfs: state.fetchingSmurfs,
     smurfsFetched: state.smurfsFetched,
     smurfsSaved: state.smurfsSaved,
-    savingSmurfs: state.savingSmurfs,
-    updatingSmurf: state.updatingSmurf,
-    smurfUpdated: state.smurfUpdated,
-    deletingSmurf: state.deletingSmurf,
-    smurfDeleted: state.smurfDeleted
+    savingSmurfs: state.savingSmurfs
   };
 };
 
