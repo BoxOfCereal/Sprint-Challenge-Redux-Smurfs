@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { saveSmurf } from "../actions";
+// import { addSmurf } from "../../actions";
 
 class AddSmurfForm extends React.Component {
   constructor(props) {
@@ -53,5 +53,7 @@ class AddSmurfForm extends React.Component {
 
 export default connect(
   null,
-  { saveSmurf }
+  {
+    /*addSmurf*/
+  }
 )(AddSmurfForm);

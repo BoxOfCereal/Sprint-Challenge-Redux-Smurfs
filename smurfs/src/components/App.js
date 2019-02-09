@@ -4,6 +4,7 @@ import "./App.css";
 
 import { fetchSmurfs } from "../actions/index";
 import SmurfList from "./SmurfList/SmurfList";
+import AddSmurfForm from "./AddSmurfForm/AddSmurfForm";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <SmurfList smurfs={this.props.smurfs} />
+        <AddSmurfForm />
       </div>
     );
   }
